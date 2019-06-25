@@ -8,12 +8,16 @@ public class Player1 : MonoBehaviour {
     [SerializeField] private float speed = 2f;
     [SerializeField] private KeyCode useKey;
     [SerializeField] private float choppingTime = 2f;
+
     private bool canMove = true;
     private Rigidbody2D rb;
     private int maxDishSize = 3;
     private int insCounter = 0;
     private int currChopped = 0;
     private string choppedVege;
+
+    //gameobject to interact
+    private GameObject toInteract = null;
 
     private bool isChopping = false;
 
@@ -38,7 +42,48 @@ public class Player1 : MonoBehaviour {
 
     void Update()
     {
-        //check for Timeout
+        //store script component of interactables.
+        if (toInteract)
+        {
+            Interactable objToInteract = toInteract.GetComponent<Interactable>();
+            //check for vegetables
+            if (objToInteract.Type == "Vegetable" && Input.GetKeyDown(useKey)
+                && toInteract && vegetablesInHand.Count < 2)
+            {
+                //add vege to hand
+                AddToPlayerHand(objToInteract);
+            }
+
+            //check for chopping Board
+            if (objToInteract.Type == "Board" && toInteract)
+            {
+                //storing BoardID.
+                int boardID = toInteract.gameObject.GetComponent<ChoppingBoard>().BoardID;
+                //chop vegetables.
+                if (vegetablesInHand.Count > 0 && Input.GetKeyDown(useKey)
+                    && choppedVegetables.Count < 3)
+                {
+                    StartCoroutine(ChoppingVege(boardID));
+                }
+                //pick up dish from Board.
+                else if (choppedVegetables.Count == 3 && vegetablesInHand.Count == 0
+                    && Input.GetKeyDown(useKey))
+                {
+                    //add dish on player hand
+                    AddDishOnPlayer(boardID);
+                }
+            }
+
+            //check for Dustbin
+            if (objToInteract.Type == "Dustbin" && toInteract)
+            {
+                //delete choppedvege list
+                if (Input.GetKeyDown(useKey))
+                {
+                    ClearChoppedVegeBoard();
+                }
+            }
+        }
     }
 
     void FixedUpdate()
@@ -66,44 +111,23 @@ public class Player1 : MonoBehaviour {
         rb.velocity = movementVector.normalized * speed ;
     }
 
-    void OnCollisionStay2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        //Code for Vegetables
-        if (other.gameObject.CompareTag("Vegetables"))
-        {
-            //store that vegetable in list if player doesnt have 2 vegetables in hand.
-            if (vegetablesInHand.Count < 2 && Input.GetKeyDown(useKey))
-            {
-                AddToPlayerHand(other.gameObject);  
-            }
-        }
 
-        //code for chopping vegetables.
-        if (other.gameObject.CompareTag("ChoppingBoard"))
+        if (other.gameObject.CompareTag("Interactable"))
         {
-            //storing Board 
-            int boardID = other.gameObject.GetComponent<ChoppingBoard>().BoardID;
-            //chop vegetables.
-            if (vegetablesInHand.Count > 0 && Input.GetKeyDown(useKey)
-                && choppedVegetables.Count < 3)
-            {
-                StartCoroutine(ChoppingVege(boardID));
-            }
-            else if (choppedVegetables.Count == 3 && vegetablesInHand.Count == 0
-                && Input.GetKeyDown(useKey))
-            {
-                //add dish on player hand
-                AddDishOnPlayer(boardID);
-            }
+            toInteract = other.gameObject;
         }
+        
+    }
 
-        //Code for Dustbin
-        if (other.gameObject.CompareTag("Dustbin"))
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Interactable"))
         {
-            //delete choppedvege list
-            if (Input.GetKeyDown(useKey))
+            if (other.gameObject == toInteract)
             {
-                ClearChoppedVegeBoard();
+                toInteract = null;
             }
         }
     }
@@ -115,9 +139,9 @@ public class Player1 : MonoBehaviour {
         readyDish.text = " ";
     }
 
-    void AddToPlayerHand(GameObject curVege)
+    void AddToPlayerHand(Interactable curVege)
     {
-        string vegeName = curVege.gameObject.name;
+        string vegeName = curVege.Name;
         vegetablesInHand.Insert(insCounter, vegeName);
         //check if it is first vegetable or a second
         if (insCounter == 0)

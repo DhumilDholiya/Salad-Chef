@@ -638,16 +638,17 @@ GameObject:
   m_Component:
   - component: {fileID: 486601667}
   - component: {fileID: 486601666}
+  - component: {fileID: 486601668}
   - component: {fileID: 486601665}
   m_Layer: 0
   m_Name: Dish_Right
-  m_TagString: Dish
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!58 &486601665
-CircleCollider2D:
+--- !u!61 &486601665
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -656,12 +657,22 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.23585367}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 1, y: 1.4717073}
+  m_EdgeRadius: 0
 --- !u!212 &486601666
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -718,13 +729,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 486601664}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.0720816, y: -2.2362683, z: -0.28847304}
+  m_LocalPosition: {x: 5.0720816, y: -2.56, z: -0.28847304}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 576887616}
   m_Father: {fileID: 1115153747}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &486601668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486601664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73128cbab1e0254439d89eb153c64a60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Dish
+  Type: Dish
 --- !u!1 &562802904
 GameObject:
   m_ObjectHideFlags: 0
@@ -737,9 +762,10 @@ GameObject:
   - component: {fileID: 562802907}
   - component: {fileID: 562802906}
   - component: {fileID: 562802908}
+  - component: {fileID: 562802909}
   m_Layer: 10
   m_Name: ChoppingBoard_left
-  m_TagString: ChoppingBoard
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -752,7 +778,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 562802904}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.22, y: -2.3662684, z: -0.28847304}
+  m_LocalPosition: {x: -3.22, y: -2.69, z: -0.28847304}
   m_LocalScale: {x: 3.3857813, y: 1.375, z: 1}
   m_Children:
   - {fileID: 413439031}
@@ -769,10 +795,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.13485213}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -783,7 +809,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.2697042}
   m_EdgeRadius: 0
 --- !u!212 &562802907
 SpriteRenderer:
@@ -846,6 +872,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BoardID: 1
+--- !u!114 &562802909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562802904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73128cbab1e0254439d89eb153c64a60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Board
+  Type: Board
 --- !u!1 &576887615
 GameObject:
   m_ObjectHideFlags: 0
@@ -1141,7 +1181,7 @@ GameObject:
   - component: {fileID: 1115153747}
   m_Layer: 0
   m_Name: Interactables
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1176,10 +1216,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1291371945}
   - component: {fileID: 1291371944}
+  - component: {fileID: 1291371947}
   - component: {fileID: 1291371946}
   m_Layer: 0
   m_Name: Dish_Left
-  m_TagString: Dish
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1240,15 +1281,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1291371943}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.0779185, y: -2.2362683, z: -0.28847304}
+  m_LocalPosition: {x: -6.0779185, y: -2.56, z: -0.28847304}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 262571058}
   m_Father: {fileID: 1115153747}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1291371946
-CircleCollider2D:
+--- !u!61 &1291371946
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1257,12 +1298,36 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.25766385}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 1, y: 1.5153277}
+  m_EdgeRadius: 0
+--- !u!114 &1291371947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291371943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73128cbab1e0254439d89eb153c64a60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Dish
+  Type: Dish
 --- !u!1 &1299218414
 GameObject:
   m_ObjectHideFlags: 0
@@ -1353,7 +1418,7 @@ GameObject:
   - component: {fileID: 1397197531}
   m_Layer: 0
   m_Name: Vegetables
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1575,9 +1640,10 @@ GameObject:
   - component: {fileID: 1660154251}
   - component: {fileID: 1660154250}
   - component: {fileID: 1660154253}
+  - component: {fileID: 1660154254}
   m_Layer: 10
   m_Name: ChoppingBoard_Right
-  m_TagString: ChoppingBoard
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1592,10 +1658,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.12949926}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1606,7 +1672,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.2589984}
   m_EdgeRadius: 0
 --- !u!212 &1660154251
 SpriteRenderer:
@@ -1664,7 +1730,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1660154249}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.3220816, y: -2.3662684, z: -0.28847304}
+  m_LocalPosition: {x: 2.3220816, y: -2.67, z: -0.28847304}
   m_LocalScale: {x: 3.3857813, y: 1.375, z: 1}
   m_Children:
   - {fileID: 458176332}
@@ -1684,6 +1750,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BoardID: 0
+--- !u!114 &1660154254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660154249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73128cbab1e0254439d89eb153c64a60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Board
+  Type: Board
 --- !u!1001 &1711651569
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2265,11 +2345,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dustbin
       objectReference: {fileID: 0}
-    - target: {fileID: 4868346593138108671, guid: 4e161c505d3ff744cbed543d960877b1,
-        type: 3}
-      propertyPath: m_TagString
-      value: Dustbin
-      objectReference: {fileID: 0}
     - target: {fileID: 4868346593138108670, guid: 4e161c505d3ff744cbed543d960877b1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2278,7 +2353,7 @@ PrefabInstance:
     - target: {fileID: 4868346593138108670, guid: 4e161c505d3ff744cbed543d960877b1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.31626844
+      value: -0.561
       objectReference: {fileID: 0}
     - target: {fileID: 4868346593138108670, guid: 4e161c505d3ff744cbed543d960877b1,
         type: 3}
@@ -2324,6 +2399,14 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1102477417, guid: 4e161c505d3ff744cbed543d960877b1, type: 3}
+      propertyPath: m_Offset.y
+      value: -1.7133038
+      objectReference: {fileID: 0}
+    - target: {fileID: 1102477417, guid: 4e161c505d3ff744cbed543d960877b1, type: 3}
+      propertyPath: m_Size.y
+      value: 1.3333926
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e161c505d3ff744cbed543d960877b1, type: 3}
