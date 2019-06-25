@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 4658892192147512}
   - component: {fileID: 50161558073315744}
   - component: {fileID: 114309227641217096}
-  - component: {fileID: 814524856756088999}
+  - component: {fileID: 4055093579828116593}
   m_Layer: 9
   m_Name: Player2
   m_TagString: Player
@@ -486,11 +486,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  useKey: 257
+  useKey: 303
   firstVegetable: {fileID: 1465762061}
   secondVegetable: {fileID: 2088291524}
---- !u!61 &814524856756088999
-BoxCollider2D:
+--- !u!58 &4055093579828116593
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -502,16 +502,6 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.28522122}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: -0.31}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.5704424}
-  m_EdgeRadius: 0
+  m_Radius: 0.73

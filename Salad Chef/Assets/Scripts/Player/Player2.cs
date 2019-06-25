@@ -49,7 +49,6 @@ public class Player2 : MonoBehaviour {
 
         Vector2 movementVector = new Vector2(h, v)  ;
         rb.velocity = movementVector.normalized * speed;
-        Debug.Log("Player 2 ::" + rb.velocity);
     }
 
     void OnCollisionStay2D(Collision2D other)
