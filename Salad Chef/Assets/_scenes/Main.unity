@@ -638,8 +638,9 @@ GameObject:
   m_Component:
   - component: {fileID: 486601667}
   - component: {fileID: 486601666}
-  - component: {fileID: 486601668}
   - component: {fileID: 486601665}
+  - component: {fileID: 486601668}
+  - component: {fileID: 486601669}
   m_Layer: 0
   m_Name: Dish_Right
   m_TagString: Interactable
@@ -750,6 +751,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Dish
   Type: Dish
+  ID: 1
+--- !u!114 &486601669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486601664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 945940b7a457cad48930af278e94f721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DishContainer: 
 --- !u!1 &562802904
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,8 +776,8 @@ GameObject:
   - component: {fileID: 562802905}
   - component: {fileID: 562802907}
   - component: {fileID: 562802906}
-  - component: {fileID: 562802908}
   - component: {fileID: 562802909}
+  - component: {fileID: 562802908}
   m_Layer: 10
   m_Name: ChoppingBoard_left
   m_TagString: Interactable
@@ -868,10 +883,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 562802904}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 803dfbdc65cedc14293e6ab45a2f6f0b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c6172c3c017fc846af8e6847acff19f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BoardID: 1
+  Container: []
+  currChopped: 0
 --- !u!114 &562802909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -886,6 +902,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Board
   Type: Board
+  ID: 1
 --- !u!1 &576887615
 GameObject:
   m_ObjectHideFlags: 0
@@ -1218,6 +1235,7 @@ GameObject:
   - component: {fileID: 1291371944}
   - component: {fileID: 1291371947}
   - component: {fileID: 1291371946}
+  - component: {fileID: 1291371948}
   m_Layer: 0
   m_Name: Dish_Left
   m_TagString: Interactable
@@ -1328,6 +1346,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Dish
   Type: Dish
+  ID: 0
+--- !u!114 &1291371948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291371943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 945940b7a457cad48930af278e94f721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DishContainer: 
 --- !u!1 &1299218414
 GameObject:
   m_ObjectHideFlags: 0
@@ -1639,8 +1671,8 @@ GameObject:
   - component: {fileID: 1660154252}
   - component: {fileID: 1660154251}
   - component: {fileID: 1660154250}
-  - component: {fileID: 1660154253}
   - component: {fileID: 1660154254}
+  - component: {fileID: 1660154253}
   m_Layer: 10
   m_Name: ChoppingBoard_Right
   m_TagString: Interactable
@@ -1746,10 +1778,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1660154249}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 803dfbdc65cedc14293e6ab45a2f6f0b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c6172c3c017fc846af8e6847acff19f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BoardID: 0
+  Container: []
+  currChopped: 0
 --- !u!114 &1660154254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1764,6 +1797,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Board
   Type: Board
+  ID: 0
 --- !u!1001 &1711651569
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1894,6 +1928,16 @@ PrefabInstance:
       propertyPath: dishOnChoppingBoard.Array.data[1]
       value: 
       objectReference: {fileID: 1299218416}
+    - target: {fileID: 114033250236297244, guid: c9ab58c9f16cf9f44b05370a9cef4558,
+        type: 3}
+      propertyPath: DishVege.Array.data[0]
+      value: 
+      objectReference: {fileID: 1558422832}
+    - target: {fileID: 114033250236297244, guid: c9ab58c9f16cf9f44b05370a9cef4558,
+        type: 3}
+      propertyPath: DishVege.Array.data[1]
+      value: 
+      objectReference: {fileID: 170072156}
     - target: {fileID: 1238315320, guid: c9ab58c9f16cf9f44b05370a9cef4558, type: 3}
       propertyPath: m_Camera
       value: 

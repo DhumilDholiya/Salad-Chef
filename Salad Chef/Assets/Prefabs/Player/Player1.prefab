@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 610043769}
   - component: {fileID: 610043768}
   m_Layer: 9
-  m_Name: FirstVegetable
+  m_Name: VegeOnHAnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: _
+  m_Text: 
 --- !u!1 &1238315317
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,13 +209,12 @@ RectTransform:
   m_LocalScale: {x: 0.01091346, y: 0.008602374, z: 0.010271492}
   m_Children:
   - {fileID: 610043767}
-  - {fileID: 2324286657645724878}
   m_Father: {fileID: 4872699778487700}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.56, y: 0.32}
+  m_AnchoredPosition: {x: 1.83, y: 0.32}
   m_SizeDelta: {x: 439, y: 247}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1579938639
@@ -509,10 +508,12 @@ MonoBehaviour:
   speed: 5
   useKey: 101
   choppingTime: 2
-  firstVegetable: {fileID: 610043768}
-  secondVegetable: {fileID: 1496896882578046122}
+  allVege: {fileID: 610043768}
   readyDish: {fileID: 1682104985}
   dishOnChoppingBoard:
+  - {fileID: 0}
+  - {fileID: 0}
+  DishVege:
   - {fileID: 0}
   - {fileID: 0}
 --- !u!58 &55751887155101587
@@ -610,82 +611,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &7394712393997038177
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2324286657645724878}
-  - component: {fileID: 1547317355075917851}
-  - component: {fileID: 1496896882578046122}
-  m_Layer: 9
-  m_Name: SecondVegetable
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2324286657645724878
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7394712393997038177}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1579938640}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -42, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 1}
---- !u!222 &1547317355075917851
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7394712393997038177}
-  m_CullTransparentMesh: 0
---- !u!114 &1496896882578046122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7394712393997038177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.98929787, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 90
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 0
-    m_MaxSize: 300
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 1
-    m_VerticalOverflow: 1
-    m_LineSpacing: 1
-  m_Text: _

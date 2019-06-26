@@ -6,4 +6,5 @@ public class Interactable : MonoBehaviour
 {
     public string Name;
     public string Type;
+    public int ID;
 }
