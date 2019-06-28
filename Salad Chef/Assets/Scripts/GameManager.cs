@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private CustomerSpawner spawner;
-    private float timeBtwnSpawn = 5f;
+    private float timeBtwnSpawn = 2f;
     private float currTime;
 
     //scoring system
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
         if (Time.time >= currTime)
         {
             currTime = Time.time + timeBtwnSpawn;
-            Debug.Log("Spawn.");
+         //   Debug.Log("Spawn.");
             spawner.SpawnCustomer();
         }
     }

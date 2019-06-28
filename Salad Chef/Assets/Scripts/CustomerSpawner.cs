@@ -50,5 +50,6 @@ public class CustomerSpawner : MonoBehaviour
     public static void DeleteCustomer(int index)
     {
         Destroy(custObj[index]);
+        isEmpty[index] = true;
     }
 }

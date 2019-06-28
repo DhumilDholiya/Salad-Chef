@@ -504,7 +504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76bd628b5b5779b4b81a09d579b1502b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerID: 0
+  PlayerID: 1
   speed: 5
   useKey: 101
   choppingTime: 2

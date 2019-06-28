@@ -9,21 +9,26 @@ public class Customer : MonoBehaviour
     [HideInInspector]public float timeToWait;
     [HideInInspector] public int ind;
 
+    public GameObject healthBar;
+
+
     public float speed = 2f;
     public Vector3 posTospawn = new Vector3();
     public Vector3 posToReach = new Vector3();
 
-    private float timePerOneVege = 10f;
+    private float timePerOneVege = 800f;
     private int maxDishSize = 3;
     private char[] allAlphabets = new char[6] { 'A', 'B','C', 'D', 'E', 'F' };
     private bool isMoving = true;
     private bool isGenerated;
+    public float _rateOfDecresing;
 
     //UI elements.
     public Text dishWantedUI;
 
     private void Start()
     {
+        _rateOfDecresing = 1f;
         dishWanted = "";
         isGenerated = false;
     }
@@ -33,6 +38,19 @@ public class Customer : MonoBehaviour
         {
             GenerateRandomString();
         }
+
+        //updating Health and time to wait.
+        if (!isMoving && timeToWait > 0)
+        {
+            UpdateHealthBar(healthBar);
+            timeToWait -= _rateOfDecresing;
+        }
+        else if(!isMoving && timeToWait <=0f)
+        {
+            //reduce score for both players.
+            //and destroy the customer.
+            CustomerSpawner.DeleteCustomer(ind);
+        }
     }
 
     private void FixedUpdate()
@@ -41,6 +59,14 @@ public class Customer : MonoBehaviour
         {
             MoveToCounter();
         }
+    }
+
+    //updating Healthbar
+    private void UpdateHealthBar(GameObject HealthBar)
+    {
+        float j= HealthBar.transform.localScale.x;
+        float k = HealthBar.transform.localScale.y;
+        HealthBar.transform.localScale = new Vector2(j-j*(1/timeToWait),k);
     }
 
     //generating wantedDish for Customer Randomly.

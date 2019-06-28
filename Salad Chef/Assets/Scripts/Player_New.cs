@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour {
-
+public class Player_New : MonoBehaviour
+{
     //unique for both player;
 
     public int PlayerID;
@@ -34,7 +34,7 @@ public class Player : MonoBehaviour {
 
 
     //To store current vegetables holder
-    private Queue<string> vegetablesInHand = new Queue<string>(); 
+    private Queue<string> vegetablesInHand = new Queue<string>();
     //To store chopped vegetables
     private ChoppingBoard choppedVege;
     //To store Dish
@@ -75,7 +75,7 @@ public class Player : MonoBehaviour {
                     && choppedVege.Container.Count < 3 && !startChoping)
                 {
                     isChopping = true;
-                    StartCoroutine(ChoppingVege(boardID,choppedVege));
+                    StartCoroutine(ChoppingVege(boardID, choppedVege));
                 }
                 //pick up dish from Board.
                 else if (vegetablesInHand.Count == 0 && Input.GetKeyDown(useKey)
@@ -110,7 +110,7 @@ public class Player : MonoBehaviour {
             //check for Customer
             if (objToInteract.Type == "Customer" && Input.GetKeyDown(useKey))
             {
-             //   Debug.Log("Customer Interaction.");
+                //   Debug.Log("Customer Interaction.");
                 cust = objToInteract.GetComponent<Customer>();
                 isCustomerDone();
             }
@@ -135,11 +135,11 @@ public class Player : MonoBehaviour {
 
         transform.rotation = Quaternion.Euler(0, 0, 0);
 
-        float h = Input.GetAxisRaw("Horizontal1");
-        float v = Input.GetAxisRaw("Vertical1");
+        float h = Input.GetAxisRaw("Horizontal2");
+        float v = Input.GetAxisRaw("Vertical2");
 
         Vector2 movementVector = new Vector2(h, v);
-        // rb.velocity = movementVector.normalized * speed ;
+        //  rb.velocity = movementVector.normalized * speed;
         Vector2 moveVeclocity = movementVector.normalized * speed;
         rb.MovePosition(rb.position + moveVeclocity * Time.fixedDeltaTime);
     }
@@ -151,7 +151,7 @@ public class Player : MonoBehaviour {
         {
             toInteract = other.gameObject;
         }
-        
+
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -172,7 +172,7 @@ public class Player : MonoBehaviour {
         if (cust.dishWanted.Equals(readySalad))
         {
             //update score.
-          //  CustomerSpawner.isEmpty[cust.ind] = true;
+            //  CustomerSpawner.isEmpty[cust.ind] = true;
             CustomerSpawner.DeleteCustomer(cust.ind);
             ClearChoppedVegeBoard(choppedVege);
         }
@@ -250,7 +250,7 @@ public class Player : MonoBehaviour {
         else if (dish.DishContainer.Length == 1)
         {
             //take vege from dish to hand.
-            if (vegetablesInHand.Count<2)
+            if (vegetablesInHand.Count < 2)
             {
                 AddToPlayerHand(dish.DishContainer);
                 DishVege[DishID].text = "";
@@ -258,5 +258,4 @@ public class Player : MonoBehaviour {
             }
         }
     }
-
 }
