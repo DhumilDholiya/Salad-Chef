@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
+    //unique for both player;
+
+    public int PlayerID;
+
     [SerializeField] private float speed = 2f;
     [SerializeField] private KeyCode useKey;
     [SerializeField] private float choppingTime = 2f;
@@ -17,6 +21,7 @@ public class Player : MonoBehaviour {
     private GameObject toInteract = null;
 
     private bool isChopping = false;
+    private bool startChoping = false;
 
     //choppign Board
 
@@ -33,6 +38,10 @@ public class Player : MonoBehaviour {
     private ChoppingBoard choppedVege;
     //To store Dish
     private Dish dishItem;
+    //To store Readysalad
+    private string readySalad;
+    //To store Customer
+    private Customer cust;
 
     void Start()
     {
@@ -62,13 +71,14 @@ public class Player : MonoBehaviour {
                 choppedVege = toInteract.GetComponent<ChoppingBoard>();
                 //chop vegetables.
                 if (vegetablesInHand.Count > 0 && Input.GetKeyDown(useKey)
-                    && choppedVege.Container.Count < 3)
+                    && choppedVege.Container.Count < 3 && !startChoping)
                 {
+                    isChopping = true;
                     StartCoroutine(ChoppingVege(boardID,choppedVege));
                 }
                 //pick up dish from Board.
-                else if (choppedVege.Container.Count == 3 && vegetablesInHand.Count == 0
-                    && Input.GetKeyDown(useKey))
+                else if (vegetablesInHand.Count == 0 && Input.GetKeyDown(useKey)
+                    && readyDish.text == "")
                 {
                     //add dish on player hand
                     AddSaladOnPlayer(boardID);
@@ -94,6 +104,14 @@ public class Player : MonoBehaviour {
                 int dishID = objToInteract.ID;
                 dishItem = toInteract.GetComponent<Dish>();
                 AddToDish(dishID, dishItem);
+            }
+
+            //check for Customer
+            if (objToInteract.Type == "Customer" && Input.GetKeyDown(useKey))
+            {
+             //   Debug.Log("Customer Interaction.");
+                cust = objToInteract.GetComponent<Customer>();
+                isCustomerDone();
             }
         }
     }
@@ -144,11 +162,30 @@ public class Player : MonoBehaviour {
         }
     }
 
+    //For Customer
+    void isCustomerDone()
+    {
+        //check for 70% timer or less.
+        if (cust.dishWanted.Equals(readySalad))
+        {
+            //udate score.
+            CustomerSpawner.isEmpty[cust.ind] = true;
+            CustomerSpawner.DeleteCustomer(cust.ind);
+            ClearChoppedVegeBoard(choppedVege);
+        }
+        else
+        {
+            // make customer Angry.
+        }
+    }
+
+    //dustbin
     void ClearChoppedVegeBoard(ChoppingBoard choBoard)
     {
         choBoard.Container.Clear();
         choBoard.currChopped = 0;
-        readyDish.text = " ";
+        readyDish.text = "";
+        readySalad = null;
     }
 
     void AddToPlayerHand(string curVege)
@@ -165,8 +202,8 @@ public class Player : MonoBehaviour {
 
     IEnumerator ChoppingVege(int BoardID, ChoppingBoard choBoard)
     {
-        isChopping = true;
         string curChoppedVege = vegetablesInHand.Dequeue();
+        startChoping = true;
         yield return new WaitForSeconds(choppingTime);
         choBoard.Container.Add(curChoppedVege);
         //updating UI.
@@ -175,9 +212,11 @@ public class Player : MonoBehaviour {
         {
             allVege.text = allVege.text + i;
         }
-        dishOnChoppingBoard[BoardID].text = dishOnChoppingBoard[BoardID].text + choBoard.Container[choBoard.currChopped];
+        readySalad = readySalad + choBoard.Container[choBoard.currChopped];
+        dishOnChoppingBoard[BoardID].text = readySalad;
         choBoard.currChopped++;
         isChopping = false;
+        startChoping = false;
     }
 
     void AddSaladOnPlayer(int BoardID)
