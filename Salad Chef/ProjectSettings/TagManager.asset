@@ -9,6 +9,7 @@ TagManager:
   - Dustbin
   - Dish
   - Interactable
+  - PowerUps
   layers:
   - Default
   - TransparentFX

@@ -9,14 +9,22 @@ public class Player_New : MonoBehaviour
 
     public int PlayerID;
 
-    [SerializeField] private float speed = 2f;
+    [SerializeField] public float speed = 2f;
     [SerializeField] private KeyCode useKey;
-    [SerializeField] private float choppingTime = 2f;
+    [SerializeField] private float choppingTime = 1f;
+
+    //Score var.
+    float rightCombPoint = 1f;
+    float newSpeed = 8f;
+    float increaseInScore = 10f;
+    float increseInTime = 20f;
+
+    float timeForMaxSpeed = 0f;
 
     private bool canMove = true;
     private Rigidbody2D rb;
     private int maxDishSize = 3;
-    private float angryCustomerRate = 1.2f;
+    private float angryCustomerRate = 90f;
 
     //gameobject to interact
     private GameObject toInteract = null;
@@ -51,6 +59,11 @@ public class Player_New : MonoBehaviour
 
     void Update()
     {
+
+        if (timeForMaxSpeed >= 0)
+        {
+            timeForMaxSpeed -= Time.deltaTime;
+        }
         //store script component of interactables.
         if (toInteract)
         {
@@ -128,6 +141,7 @@ public class Player_New : MonoBehaviour
 
     public void MovePlayer()
     {
+        float currSpeed;
         if (!canMove)
         {
             return;
@@ -140,7 +154,15 @@ public class Player_New : MonoBehaviour
 
         Vector2 movementVector = new Vector2(h, v);
         //  rb.velocity = movementVector.normalized * speed;
-        Vector2 moveVeclocity = movementVector.normalized * speed;
+        if (timeForMaxSpeed > 0)
+        {
+            currSpeed = newSpeed;
+        }
+        else
+        {
+            currSpeed = speed;
+        }
+        Vector2 moveVeclocity = movementVector.normalized * currSpeed;
         rb.MovePosition(rb.position + moveVeclocity * Time.fixedDeltaTime);
     }
 
@@ -152,6 +174,25 @@ public class Player_New : MonoBehaviour
             toInteract = other.gameObject;
         }
 
+        if (other.gameObject.CompareTag("PowerUps") && other.gameObject.GetComponent<PowerUp>().playerId == 2)
+        {
+            PowerUp powUp = other.gameObject.GetComponent<PowerUp>();
+            if (powUp.name == "Speed")
+            {
+                timeForMaxSpeed = 9f;
+                Destroy(other.gameObject);
+            }
+            else if (powUp.name == "Score")
+            {
+                GameManager._scorePlayer2 += increaseInScore;
+                Destroy(other.gameObject);
+            }
+            else if (powUp.name == "Time")
+            {
+                GameManager._timePlayer2 += increseInTime;
+                Destroy(other.gameObject);
+            }
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -171,8 +212,14 @@ public class Player_New : MonoBehaviour
         //check for 70% timer or less.
         if (cust.dishWanted.Equals(readySalad))
         {
+            if (cust.healthBar.transform.localScale.x > 0.6f)
+            {
+                cust.isCusthappy = true;
+                cust.happyAtPlayer = this.PlayerID;
+            }
             //update score.
-            //  CustomerSpawner.isEmpty[cust.ind] = true;
+            GameManager._scorePlayer2 += rightCombPoint;
+
             CustomerSpawner.DeleteCustomer(cust.ind);
             ClearChoppedVegeBoard(choppedVege);
         }
@@ -209,7 +256,7 @@ public class Player_New : MonoBehaviour
     {
         string curChoppedVege = vegetablesInHand.Dequeue();
         startChoping = true;
-        yield return new WaitForSeconds(choppingTime);
+        yield return new WaitForSeconds(1f);
         choBoard.Container.Add(curChoppedVege);
         //updating UI.
         allVege.text = "";
@@ -217,8 +264,8 @@ public class Player_New : MonoBehaviour
         {
             allVege.text = allVege.text + i;
         }
+        dishOnChoppingBoard[BoardID].text = dishOnChoppingBoard[BoardID].text + choBoard.Container[choBoard.currChopped];
         readySalad = readySalad + choBoard.Container[choBoard.currChopped];
-        dishOnChoppingBoard[BoardID].text = readySalad;
         choBoard.currChopped++;
         isChopping = false;
         startChoping = false;

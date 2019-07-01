@@ -157,10 +157,23 @@ MonoBehaviour:
   dishWanted: 
   timeToWait: 0
   ind: 0
+  powerUps:
+  - {fileID: 3568251988797282013, guid: 54e656611ba486a439865dd3f2e271b6, type: 3}
+  - {fileID: 7875896334180618180, guid: 86a350eb38ebd644880127993d14e666, type: 3}
+  - {fileID: 709923717736685651, guid: 1830f257e3deaef4f9d70c94c7ea2097, type: 3}
   healthBar: {fileID: 7903788802275893938}
+  minX: -7
+  minY: -2.8
+  maxX: 6.91
+  maxY: 2.45
   speed: 2
   posTospawn: {x: 0, y: 0, z: 0}
   posToReach: {x: 0, y: 4, z: 0}
+  isCustAngry: 0
+  angryAtPlayer: 0
+  isCusthappy: 0
+  happyAtPlayer: 0
+  _rateOfDecresing: 0
   dishWantedUI: {fileID: 6633699797758984431}
 --- !u!114 &3568815484629634294
 MonoBehaviour:

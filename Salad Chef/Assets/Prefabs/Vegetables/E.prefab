@@ -105,7 +105,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.7662914, y: 2.25}
+  m_Size: {x: 2.7662914, y: 0.8916703}
   m_EdgeRadius: 0
 --- !u!114 &3795399630998809100
 MonoBehaviour:
@@ -121,3 +121,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: E
   Type: Vegetable
+  ID: 0

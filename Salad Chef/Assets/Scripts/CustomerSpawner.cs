@@ -25,17 +25,19 @@ public class CustomerSpawner : MonoBehaviour
 
     }
     //generate random index to spawn.
-    private int GenerateRandomNo()
+    private int GenerateRandomNo(int max)
     {
         int no =0;
-        no = Random.Range(0, maxSpwanPos);
+        no = Random.Range(0, max);
         return no;
     }
+
+ 
 
 
     public void SpawnCustomer()
     {
-        int index = GenerateRandomNo();
+        int index = GenerateRandomNo(maxSpwanPos);
         if (isEmpty[index])
         {
             custObj[index] = Instantiate(toSpawn, spawnPos[index].position,Quaternion.identity);
@@ -46,6 +48,8 @@ public class CustomerSpawner : MonoBehaviour
             isEmpty[index] = false; 
         }
     }
+
+
 
     public static void DeleteCustomer(int index)
     {
