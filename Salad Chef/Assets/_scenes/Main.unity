@@ -3452,6 +3452,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
+    - target: {fileID: 114033250236297244, guid: c9ab58c9f16cf9f44b05370a9cef4558,
+        type: 3}
+      propertyPath: dishOnChoppingBoard.Array.data[0]
+      value: 
+      objectReference: {fileID: 919744437}
+    - target: {fileID: 114033250236297244, guid: c9ab58c9f16cf9f44b05370a9cef4558,
+        type: 3}
+      propertyPath: dishOnChoppingBoard.Array.data[1]
+      value: 
+      objectReference: {fileID: 1299218416}
+    - target: {fileID: 114033250236297244, guid: c9ab58c9f16cf9f44b05370a9cef4558,
+        type: 3}
+      propertyPath: DishVege.Array.data[0]
+      value: 
+      objectReference: {fileID: 1558422832}
+    - target: {fileID: 114033250236297244, guid: c9ab58c9f16cf9f44b05370a9cef4558,
+        type: 3}
+      propertyPath: DishVege.Array.data[1]
+      value: 
+      objectReference: {fileID: 170072156}
     - target: {fileID: 4872699778487700, guid: c9ab58c9f16cf9f44b05370a9cef4558, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.44
@@ -3500,26 +3520,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 246783354}
-    - target: {fileID: 114033250236297244, guid: c9ab58c9f16cf9f44b05370a9cef4558,
-        type: 3}
-      propertyPath: dishOnChoppingBoard.Array.data[0]
-      value: 
-      objectReference: {fileID: 919744437}
-    - target: {fileID: 114033250236297244, guid: c9ab58c9f16cf9f44b05370a9cef4558,
-        type: 3}
-      propertyPath: dishOnChoppingBoard.Array.data[1]
-      value: 
-      objectReference: {fileID: 1299218416}
-    - target: {fileID: 114033250236297244, guid: c9ab58c9f16cf9f44b05370a9cef4558,
-        type: 3}
-      propertyPath: DishVege.Array.data[0]
-      value: 
-      objectReference: {fileID: 1558422832}
-    - target: {fileID: 114033250236297244, guid: c9ab58c9f16cf9f44b05370a9cef4558,
-        type: 3}
-      propertyPath: DishVege.Array.data[1]
-      value: 
-      objectReference: {fileID: 170072156}
     - target: {fileID: 1238315320, guid: c9ab58c9f16cf9f44b05370a9cef4558, type: 3}
       propertyPath: m_Camera
       value: 

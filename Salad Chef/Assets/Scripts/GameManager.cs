@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1;
         spawner = GetComponent<CustomerSpawner>();
         maxScore = float.MinValue;
         _scorePlayer1 = 0f;
@@ -79,10 +80,11 @@ public class GameManager : MonoBehaviour
         }
         if((int)_timePlayer1 == 0 && (int)_timePlayer2 == 0)
         {
-            if (maxScore == _scorePlayer1) winnerPlayer.text = "Winner is Player1 with Score : " + maxScore;
+            if(maxScore == _scorePlayer1 && maxScore == _scorePlayer2) winnerPlayer.text = "Game Draw is by score : " + maxScore;
+            else if (maxScore == _scorePlayer1) winnerPlayer.text = "Winner is Player1 with Score : " + maxScore;
             else if (maxScore == _scorePlayer2) winnerPlayer.text = "Winner is Player2 with Score : " + maxScore;
-            else winnerPlayer.text = "Game Draw is by score : " + maxScore;
             restartPanel.SetActive(true);
+            if(Time.timeScale == 1) Time.timeScale = 0;
         }
     }
 
@@ -90,8 +92,8 @@ public class GameManager : MonoBehaviour
     {
         scorePlayer1.text = "Score : " + _scorePlayer1;
         scorePlayer2.text = "Score : " + _scorePlayer2;
-        timePlayer1.text = "Time : " +(int) _timePlayer1;
-        timePlayer2.text = "Time : " + (int)_timePlayer2;
+        timePlayer1.text = "Time : " +(int) _timePlayer1 + "s";
+        timePlayer2.text = "Time : " + (int)_timePlayer2 + "s";
     }
 
     void OnPause()
@@ -99,14 +101,14 @@ public class GameManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             pausePanel.SetActive(true);
-            Time.timeScale = 0;
+            if (Time.timeScale == 1) Time.timeScale = 0;
         }
     }
 
     public void OnResume()
     {
+        if (Time.timeScale == 0) Time.timeScale = 1;
         pausePanel.SetActive(false);
-        Time.timeScale = 1;
     }
 
     float LoseTime(float time)
@@ -118,16 +120,18 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
+        if (Time.timeScale == 0) Time.timeScale = 1;
         SceneManager.LoadScene("Main");
     }
 
     public void GoToMainMenu()
     {
+       
+        SceneManager.LoadScene("MainMenu");
         if (Time.timeScale == 0)
         {
             Time.timeScale = 1;
         }
-        SceneManager.LoadScene("MainMenu");
     }
 
 }
